@@ -1,0 +1,53 @@
+{%  extends 'base.html.twig' %}
+
+{% block title 'HomePage' %}
+
+
+{% block body %}
+    <div class="container mt-4">
+        <h1>Gerer les biens</h1>
+
+        {% for message in app.flashes('succes') %}
+            <div class="alert alert-success">
+                {{ message }}
+            </div>
+        {% endfor %}
+        <div class="jumbotron text-center">
+            <div class="container">
+                <h1>Welcome Home page</h1>
+            </div>
+        </div>
+        <div class="container">
+            <h2>Les derniers biens</h2>
+            <div class="row flex">
+                    <table class="table table-striped">
+                        <thead>
+                        <tr>
+                            <th>Titres</th>
+                            <th>Actions</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {% for property in properties %}
+                            <tr>
+                                <td>{{ property.title }}</td>
+                                <td>
+                                    <a href="{{ path('admin.property.edit', {id:property.id, }) }}" class="btn btn-secondary">Editer le bien</a>
+                                    <form method="post" action="{{ path('admin.property.delete', {id:property.id}) }} " style="display: inline-block" >
+                                        <input type="hidden" name="_method" value="DELETE" >
+                                        <input type="hidden" name="_token"  value="{{ csrf_token('delete' ~ property.id) }}">
+                                        <button class="btn btn-danger" onclick="return confirm('are u sure?')">Supprimer</button>
+                                    </form>
+                                </td>
+                            </tr>
+                        {% endfor %}
+
+                        </tbody>
+                    </table>
+<div class="text-right">
+    <a href="{{ path('admin.property.new') }}" class="btn btn-primary"> Créer un nouveau bien</a>
+</div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,14 @@
+{%  extends 'base.html.twig' %}
+
+{% block title 'HomePage' %}
+
+{# this tag only applies to the forms defined in this template #}
+{% form_theme form 'bootstrap_4_layout.html.twig' %}
+
+{% block body %}
+<div class="container mt-4">
+    <h2>Créer le texte</h2>
+    {{ include ('admin/property/_form.html.twig', {form: form, button: 'Créer'}) }}
+
+</div>
+{% endblock %}
