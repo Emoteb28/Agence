@@ -7,6 +7,8 @@
         "ext-iconv": "*",
         "cocur/slugify": "^4.0",
         "easycorp/easyadmin-bundle": "^2.3",
+        "fzaninotto/faker": "^1.9",
+        "knplabs/knp-paginator-bundle": "^4.1",
         "sensio/framework-extra-bundle": "^5.5",
         "symfony/asset": "4.4.*",
         "symfony/console": "4.4.*",
